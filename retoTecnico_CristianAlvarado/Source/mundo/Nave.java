@@ -2,8 +2,10 @@ package mundo;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import java.util.ArrayList;
 /**
 *Clase que representa una nave espacial
+*Fin
 */
 
 public class Nave {
@@ -44,12 +46,12 @@ public class Nave {
 	/**
 	*Fecha de retiro de servicio de la nave
 	*/
-	private Fecha fechaRetiro;
+	private String fechaRetiro;
 
 	/**
 	*Fecha de inicio de operaciones de la nave
 	*/
-	private Fecha fechaInicio;
+	private String fechaInicio;
 
 	/**
 	*Tiempo de servicio de la nave
@@ -64,13 +66,18 @@ public class Nave {
 	/**
 	*Potencia de la nave
 	*/
-	private double potencia;
+	private String potencia;
 
 	/**
 	*Ruta de la imagen de la nave;
 	*/
 	private String imagen;
 
+	/**
+	 * Lista de palabras clave de la nave
+	 */
+	private ArrayList<String> palabras;
+	
 	//------------------------
 	//Métodos
 	//------------------------
@@ -80,14 +87,14 @@ public class Nave {
 	*<b>post: </b> Se creó la nave con los siguientes valores: <br>
 	*Nombre: Saturno V, Tipo: Vehículos lanzadera, Propietario: EEUU, fechaInicio:1967, fecha Retiro:1973
 	*/
-	public Nave()
+	public Nave(String pNombre, String pTipo, String pPropietario, String pAñoInicio, String pAñoRetiro,String pPotencia)
 	{
-		nombre="Saturno V";
-		tipo="Vehículos lanzadera";
-		propietario="EEUU";
-		fechaInicio=new Fecha (1967);
-		fechaRetiro=new Fecha (1973);
-		potencia=5;
+		nombre=pNombre;
+		tipo=pTipo;
+		propietario=pPropietario;
+		fechaInicio=pAñoInicio;
+		fechaRetiro=pAñoRetiro;
+		potencia=pPotencia;
 	}
 
 	/**
@@ -141,14 +148,14 @@ public class Nave {
 	 * Retorna la antiguedad de la nave
 	 * @return antiguedad de la nave en años
 	 */
-	public int calcularAntiguedad()
-	{
-		Fecha hoy=darFechaActual();
-		int antiguedad=fechaInicio.darDiferenciaEnAnios(hoy);
-		return antiguedad;
-	}
+	//public int calcularAntiguedad()
+	//{
+		//Fecha hoy=darFechaActual();
+		//int antiguedad=fechaInicio.darDiferenciaEnAnios(hoy);
+		//return antiguedad;
+	//}
 	
-	public double darPotencia()
+	public String darPotencia()
 	{
 		return potencia;
 	}
@@ -171,7 +178,7 @@ public class Nave {
 	*@param pAñoRetiro
 	*@param pImagen
 	*/
-	public void cambiarNave(String pNombre, String pTipo, String pPropietario, Fecha pAñoInicio, Fecha pAñoRetiro,double pPotencia, String pImagen)
+	public void cambiarNave(String pNombre, String pTipo, String pPropietario, String pAñoInicio, String pAñoRetiro,String pPotencia)
 	{
 		nombre=pNombre;
 		tipo=pTipo;
@@ -179,10 +186,9 @@ public class Nave {
 		fechaInicio=pAñoInicio;
 		fechaRetiro=pAñoRetiro;
 		potencia=pPotencia;
-		imagen=pImagen;
 	}
 	
-	public void cambiarPotencia(double pPotencia)
+	public void cambiarPotencia(String pPotencia)
 	{
 		potencia=pPotencia;
 	}
@@ -197,6 +203,22 @@ public class Nave {
 		int anio=gc.get(Calendar.YEAR);
 		Fecha hoy=new Fecha(anio);
 		return hoy;
+	}
+	
+	public boolean contienePalabraClave(String pPalabra)
+	{
+		boolean encontrado=false;
+		int contador=0;
+		while(contador<palabras.size() && !encontrado)
+		{
+			String palabraC=palabras.get(contador);
+			if(pPalabra.equals(palabraC))
+			{
+				encontrado=true;
+			}
+			contador++;
+		}
+		return encontrado;
 	}
 	
 	

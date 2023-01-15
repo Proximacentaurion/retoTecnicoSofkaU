@@ -36,7 +36,7 @@ public class PanelConsultas extends JPanel implements ActionListener
 	//------------------------
 	//Atributos		
 	//------------------------
-	private InterfazNave principal;
+	private InterfazListaDeNaves principal;
 		
 	//------------------------
 	//Atributos de la interfaz
@@ -61,7 +61,7 @@ public class PanelConsultas extends JPanel implements ActionListener
 	 * <b>post:</b> Panel quedó inicializado.
 	 * @param pPrincipal Interfaz principal de la aplicación. pPrincipal !=null.
 	 */		
-	public PanelConsultas(InterfazNave pPrincipal)
+	public PanelConsultas(InterfazListaDeNaves pPrincipal)
 	{
 		principal=pPrincipal;
 		setLayout(new BorderLayout());
@@ -72,7 +72,7 @@ public class PanelConsultas extends JPanel implements ActionListener
 		btnAntiguedad.setActionCommand(PanelConsultas.CALCULAR_ANTIGUEDAD);
 		btnAntiguedad.addActionListener(this);
 		
-		txtAntiguedad=new JTextField(10);
+		txtAntiguedad=new JTextField(15);
 		txtAntiguedad.setEditable(false);
 		
 		JPanel panelCalculos= new JPanel(new GridLayout(3,2));

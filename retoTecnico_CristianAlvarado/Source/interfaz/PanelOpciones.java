@@ -32,7 +32,7 @@ public class PanelOpciones extends JPanel implements ActionListener
 	/**
 	 * Ventana principal de la aplicación;
 	 */
-	private InterfazNave principal;
+	private InterfazListaDeNaves principal;
 	
 	//------------------------
 	//Atributos de la interfaz
@@ -52,7 +52,7 @@ public class PanelOpciones extends JPanel implements ActionListener
 	 * @param pPrincipal Ventana principal de la aplicación. pPrincipal != null.
 	 */
 	
-	public PanelOpciones(InterfazNave pPrincipal)
+	public PanelOpciones(InterfazListaDeNaves pPrincipal)
 	{
 		principal=pPrincipal;
 		
@@ -76,7 +76,7 @@ public class PanelOpciones extends JPanel implements ActionListener
 		String comando=pEvento.getActionCommand();
 		if(CAMBIAR_NAVE.equals(comando))
 		{
-			principal.mostrarDialogoCambiarNave();
+			//principal.mostrarDialogoCambiarNave();
 		}
 	}
 
